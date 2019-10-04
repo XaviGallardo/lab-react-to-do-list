@@ -6,6 +6,7 @@ export default class AddToDo extends Component {
 
     this.state = {
       todo: '',
+      done: false,
     };
   }
 
@@ -17,7 +18,7 @@ export default class AddToDo extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    this.props.addToDo(this.state.todo);
+    this.props.addToDo(this.state);
     this.setState({
       todo: '',
     });

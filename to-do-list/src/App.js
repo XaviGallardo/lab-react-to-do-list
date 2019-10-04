@@ -7,9 +7,10 @@ import Button from './components/Button';
 
 class App extends Component {
   state = {
-    toDoList: ["hola", "adios"],
+    toDoList: [{ todo: "hola", done: false }, { todo: "adios", done: false }],
   };
   addToDoHandler = (toDo) => {
+    console.log("toDo:", toDo);
     this.setState({ toDoList: [...this.state.toDoList, toDo] }, () => {
       console.log('🤣', this.state.toDoList);
     });
@@ -24,7 +25,14 @@ class App extends Component {
 
   doneItem = (itemIndex) => {
     console.log("Tachar Texto: ", itemIndex);
-
+    // this.setState   toDoList[itemIndex].done: true
+    // this.state.toDoList[itemIndex].done = true;
+    console.log("To Do LIST: ", this.state.toDoList);
+    let changeToDoList = [...this.state.toDoList];
+    changeToDoList[itemIndex].done = !changeToDoList[itemIndex].done;
+    // this.state.toDoList[itemIndex].done = true;
+    this.setState({ toDoList: [...changeToDoList] });
+    console.log("To Do LIST AFTER: ", this.state.toDoList);
   }
 
   render() {
